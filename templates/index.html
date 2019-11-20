@@ -5,11 +5,6 @@
     <body>
         <h1>some body</h1>
         <p>some text</p>
-        {% for item in data %}
-            {% for detail in item %}
-                <div class="flash">{{ detail }}      |       </div>
-            {% endfor %}
-            <br>
-        {% endfor %}
+        {{data|safe}}
     </body>
 </html>
