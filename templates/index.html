@@ -1,10 +1,65 @@
 <html>
     <head>
-        <title>Something</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+        <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>    
+        <title>Tugas Final</title>
     </head>
     <body>
-        <h1>some body</h1>
-        <p>some text</p>
-        {{data|safe}}
-    </body>
+        <h1>Informasi Fluktuasi nilai Mata Uang dari Web Bank Mandiri</h1>
+        <p>oleh</p>
+        <p>Grathya Sri Muyani \t H13116522</p>
+        <p>Karla Yusmita Salipadang \t H13116521</p>
+        <h1>Fluktuasi nilai mata uang</h1>
+        <h3>Tampilan Grafiknya</h3>
+        <canvas id="myChart" width="200" height="100"></canvas>
+        <script type="text/javascript">
+            var ctx = document.getElementById('myChart');
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['AUD', 'CAD', 'CHF', 'CNY', 'DKK', 'EUR', 'GBP', 'HKD', 'JPY', 'NOK', 'NZD', 'SAR', 'SEK', 'SGD', 'USD'],
+                    datasets: [{
+                    label: "TT Counter Buy",
+                    backgroundColor: "lightgreen",
+                    borderColor: "green",
+                    borderWidth: 1,
+                    data: {{data[0]|safe}}
+                    },{
+                    label: "TT Counter Sell",
+                    backgroundColor: "lightblue",
+                    borderColor: "blue",
+                    borderWidth: 1,
+                    data: {{data[1]|safe}}
+                    },{
+                    label: "Banknotes Buy",
+                    backgroundColor: "pink",
+                    borderColor: "red",
+                    borderWidth: 1,
+                    data: {{data[2]|safe}}
+                    },{
+                    label: "Banknotes Sell",
+                    backgroundColor: "lightbrown",
+                    borderColor: "brown",
+                    borderWidth: 1,
+                    data: {{data[3]|safe}}
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            
+        </script>
+ </body>
 </html>
